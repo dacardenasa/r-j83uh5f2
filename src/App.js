@@ -1,31 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component {
+function App() {
+  const [text, setText] = useState("");
 
-  constructor(){
-    super();
-    this.getLength = this.getLength.bind(this);
-
-    this.state = {
-      counter: 0
-    }
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <textarea rows="3" onChange={this.getLength}></textarea>
-        <div className="counter">{this.state.counter}</div>
-      </div>
-    );
-  }
-
-  getLength(event){
-    this.setState({
-      counter: event.target.value.length
-    });
-  }
+  return (
+    <div className="container">
+      <textarea rows="3" onChange={ e => setText(e.target.value)}></textarea>
+      <div className="counter">{text.length}</div>
+    </div>
+  );
 }
 
 export default App;
